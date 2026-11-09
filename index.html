@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abdul Raheem Shahzad</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Abdul Raheem Shahzad — machine learning for clinical and biomedical prediction. PhD student, Software Engineering, Wuhan University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: sticky identity column (name, stain-coloured blastocyst mark, links) beside a long reading column of sections. */
+:root{
+  --bg:#F4F5F8; --surface:#FFFFFF; --ink:#151922; --muted:#5A6171; --line:#DADEE6;
+  --hema:#33399A;  /* hematoxylin: primary accent */
+  --eosin:#B93A66; /* eosin: secondary highlight */
+  --hema-soft:#E7E8F6;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1117; --surface:#151922; --ink:#E6E8EE; --muted:#9BA2B0; --line:#262C37;
+  --hema:#A3AAFF; --eosin:#F28AAE; --hema-soft:#1D2140; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0E1117; --surface:#151922; --ink:#E6E8EE; --muted:#9BA2B0; --line:#262C37;
+  --hema:#A3AAFF; --eosin:#F28AAE; --hema-soft:#1D2140; color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);margin:0;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--hema);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--eosin)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--eosin);outline-offset:3px;border-radius:3px}
+
+.wrap{max-width:1120px;margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:48px 64px;
+  display:grid;grid-template-columns:300px minmax(0,1fr);gap:64px}
+
+/* ---------- Identity column ---------- */
+aside{position:sticky;top:calc(32px + env(safe-area-inset-top, 0px));align-self:start;display:grid;gap:22px}
+.mark{display:flex;align-items:center;gap:14px}
+.mark canvas{width:76px;height:76px;flex:none}
+.mark figcaption{font:400 11px/1.45 var(--mono);color:var(--muted)}
+h1{font:700 2.35rem/1.02 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.role{margin:8px 0 0;color:var(--muted);font-size:.98rem;line-height:1.45}
+.links{list-style:none;margin:0;padding:0;display:grid;gap:6px;font:400 .82rem/1.3 var(--mono)}
+.links a{text-decoration:none;display:inline-flex;gap:10px;align-items:baseline}
+.links a span{color:var(--muted);min-width:4.6em;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+.cv{display:inline-block;font:500 .82rem/1 var(--mono);text-decoration:none;color:var(--surface);
+  background:var(--hema);padding:11px 16px;border-radius:4px;justify-self:start}
+.cv:hover{background:var(--eosin);color:var(--surface)}
+nav{display:flex;flex-wrap:wrap;gap:4px 14px;font:400 .78rem/1.6 var(--mono);border-top:1px solid var(--line);padding-top:16px}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--hema)}
+
+/* ---------- Reading column ---------- */
+main{min-width:0;display:grid;gap:56px}
+section{display:grid;gap:18px;scroll-margin-top:24px}
+h2{font:700 .8rem/1 var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--hema);margin:0;
+  display:flex;align-items:center;gap:12px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.lede{font-size:1.28rem;line-height:1.5;margin:0;max-width:62ch;text-wrap:pretty}
+.lede strong{font-weight:600}
+p{margin:0;max-width:65ch}
+.interests{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:4px 0 0;padding:0}
+.interests li{font:400 .8rem/1 var(--mono);padding:8px 11px;border:1px solid var(--line);border-radius:3px;color:var(--ink);background:var(--surface)}
+
+/* News */
+.news{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.news li{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:16px;align-items:baseline}
+.date{font:400 .78rem/1.4 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Publications */
+.filter{display:flex;gap:6px;font:400 .78rem/1 var(--mono)}
+.filter button{font:inherit;color:var(--muted);background:none;border:1px solid var(--line);border-radius:3px;padding:7px 11px;cursor:pointer}
+.filter button[aria-pressed="true"]{color:var(--surface);background:var(--hema);border-color:var(--hema)}
+.pubs{list-style:none;margin:0;padding:0;display:grid;gap:22px;counter-reset:pub}
+.pub{display:grid;grid-template-columns:2.2em minmax(0,1fr);gap:6px}
+.pub::before{counter-increment:pub;content:"[" counter(pub) "]";font:400 .8rem/1.9 var(--mono);color:var(--muted)}
+.pub[hidden]{display:none}
+.pub h3{font:600 1.05rem/1.38 var(--body);margin:0 0 4px;text-wrap:pretty}
+.pub h3 a{color:var(--ink);text-decoration:none}
+.pub h3 a:hover{color:var(--hema);text-decoration:underline}
+.authors{color:var(--muted);font-size:.93rem;line-height:1.5}
+.authors b{color:var(--ink);font-weight:600}
+.venue{font-size:.93rem;margin-top:2px}
+.venue i{color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px;font:400 .74rem/1 var(--mono)}
+.chip{padding:5px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.06em;border:1px solid currentColor}
+.chip.pubd{color:var(--hema)}
+.chip.prog{color:var(--eosin)}
+.meta a{text-decoration:none;padding:5px 0}
+.meta a:hover{text-decoration:underline}
+.note{font:400 .76rem/1.4 var(--mono);color:var(--muted)}
+
+/* Timeline entries (experience, education, talks) */
+.entries{display:grid;gap:26px}
+.entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 20px}
+.entry h3{font:600 1.05rem/1.35 var(--body);margin:0}
+.entry .where{font:400 .78rem/1.5 var(--mono);color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.entry .sub{grid-column:1/-1;color:var(--muted);font-size:.95rem}
+.entry ul{grid-column:1/-1;margin:6px 0 0;padding-left:1.1em;display:grid;gap:4px;max-width:65ch}
+.entry ul li::marker{color:var(--eosin)}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px}
+.proj{display:grid;gap:6px;align-content:start;border-top:2px solid var(--ink);padding-top:12px}
+.proj h3{font:600 1rem/1.35 var(--body);margin:0}
+.proj p{font-size:.93rem;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px 10px;font:400 .72rem/1.4 var(--mono);color:var(--hema)}
+.proj a.code{font:500 .76rem/1 var(--mono);text-decoration:none;margin-top:4px}
+.proj a.code:hover{text-decoration:underline}
+
+/* Honors */
+.honors{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.honors li{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:16px;align-items:baseline}
+.honors strong{font-weight:600}
+
+/* Contact */
+.contact{background:var(--hema-soft);border-radius:6px;padding:24px;display:grid;gap:14px}
+.email-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.email{font:500 1.05rem/1.2 var(--mono);color:var(--ink);user-select:all;word-break:break-all}
+.copy{font:500 .76rem/1 var(--mono);color:var(--hema);background:var(--surface);border:1px solid var(--hema);border-radius:3px;padding:8px 12px;cursor:pointer}
+.copy:hover{color:var(--eosin);border-color:var(--eosin)}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;font-size:.93rem}
+.refs b{font-weight:600}
+.refs span{display:block;color:var(--muted)}
+.refs code{font:400 .8rem/1.4 var(--mono);color:var(--ink);user-select:all;word-break:break-all}
+footer{font:400 .74rem/1.5 var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+@media (max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:40px;padding-block:28px 48px}
+  aside{position:static}
+  h1{font-size:2.1rem}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .lede{font-size:1.14rem}
+  .projects,.refs{grid-template-columns:minmax(0,1fr)}
+  .entry{grid-template-columns:minmax(0,1fr)}
+  .entry .where{text-align:left;white-space:normal}
+  .news li,.honors li{grid-template-columns:minmax(0,1fr);gap:0}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<aside>
+  <figure class="mark" style="margin:0">
+    <canvas id="blasto" width="152" height="152" aria-label="Schematic of a blastocyst: a ring of trophectoderm cells around an inner cell mass"></canvas>
+    <figcaption>Blastocyst: trophectoderm ring and inner cell mass, the two structures my IVF model encodes separately.</figcaption>
+  </figure>
+  <div>
+    <h1>Abdul Raheem Shahzad</h1>
+    <p class="role">PhD student, Software Engineering<br>Wuhan University, China</p>
+  </div>
+  <ul class="links">
+    <li><a href="https://t.ly/vts8H" target="_blank" rel="noopener"><span>Scholar</span>Google Scholar</a></li>
+    <li><a href="https://github.com/abdul-raheem-shahzad" target="_blank" rel="noopener"><span>Code</span>abdul-raheem-shahzad</a></li>
+    <li><a href="https://www.linkedin.com/in/abdul-raheem-shahzad-67b949213/" target="_blank" rel="noopener"><span>LinkedIn</span>abdul-raheem-shahzad</a></li>
+    <li><a href="https://www.kaggle.com/abdulraheem625" target="_blank" rel="noopener"><span>Kaggle</span>abdulraheem625</a></li>
+    <li><a href="#contact"><span>Email</span>abdul.raheem.colab@gmail.com</a></li>
+  </ul>
+  <a class="cv" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+  <nav aria-label="Sections">
+    <a href="#about">About</a><a href="#news">News</a><a href="#publications">Publications</a>
+    <a href="#experience">Experience</a><a href="#education">Education</a><a href="#projects">Projects</a>
+    <a href="#honors">Honors</a><a href="#talks">Talks</a><a href="#contact">Contact</a>
+  </nav>
+</aside>
+
+<main>
+  <section id="about">
+    <h2>About</h2>
+    <p class="lede">I build machine-learning models for <strong>clinical and biomedical prediction</strong>. My current work, with Prof.&nbsp;Zhang's team at Zhongnan Hospital of Wuhan University, predicts live birth after IVF/ICSI from embryo morphology and structured clinical data.</p>
+    <p>I am a PhD student in Software Engineering at Wuhan University, where I completed my M.S. as a China Scholarship Council scholar (GPA 3.67/4.0, ranked 2nd in class). I hold a B.S. in Software Engineering from CECOS University, where I graduated first in the department with a gold medal. Alongside clinical ML, I apply deep learning to environmental data, including groundwater forecasting and seagrass habitat modelling.</p>
+    <ul class="interests" aria-label="Research interests">
+      <li>Clinical prediction models</li><li>Assisted reproduction (IVF/ICSI)</li><li>Medical image analysis</li>
+      <li>Trustworthy clinical NLP</li><li>Systematic review &amp; meta-analysis</li><li>ML for climate &amp; environment</li>
+    </ul>
+  </section>
+
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news">
+      <li><span class="date">Nov 2026</span><span>Systematic review and meta-analysis of ML for IVF/ICSI live-birth prediction posted on <a href="https://arxiv.org/abs/2611.07124" target="_blank" rel="noopener">arXiv</a>; under review at IEEE TPAMI.</span></li>
+      <li><span class="date">Oct 2026</span><span>Hybrid attention–logistic regression ensemble for live-birth prediction after fresh embryo transfer posted on <a href="http://arxiv.org/abs/2610.21134" target="_blank" rel="noopener">arXiv</a> (IEEE JBHI).</span></li>
+      <li><span class="date">Mar 2026</span><span>Attended ICMSS 2026, the 10th International Conference on Management Engineering, Software Engineering and Service Sciences, Wuhan.</span></li>
+      <li><span class="date">Dec 2025</span><span>Received the Outstanding International Student Award, School of Computer Science, Wuhan University.</span></li>
+      <li><span class="date">Sep 2025</span><span>Started as Clinical Research Collaborator at Zhongnan Hospital of Wuhan University.</span></li>
+      <li><span class="date">Jun 2025</span><span>CML prediction dashboard paper published in <a href="https://doi.org/10.1371/journal.pone.0321761" target="_blank" rel="noopener">PLoS One</a>.</span></li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <div class="filter" role="group" aria-label="Filter publications">
+      <button type="button" id="f-all" aria-pressed="true" data-f="all">All (6)</button>
+      <button type="button" id="f-first" aria-pressed="false" data-f="first">First author (2)</button>
+    </div>
+    <ol class="pubs">
+      <li class="pub" data-first="1"><div>
+        <h3><a href="http://arxiv.org/abs/2610.21134" target="_blank" rel="noopener">Predicting Live Birth After Fresh Embryo Transfer in IVF/ICSI: Differential ICM/Trophectoderm Morphology Encoding and a Hybrid Attention–Logistic Regression Ensemble</a></h3>
+        <div class="authors"><b>A. R. Shahzad</b>†, J. Chen†, M. Zhang, J. Deng</div>
+        <div class="venue"><i>IEEE Journal of Biomedical and Health Informatics (JBHI)</i>, 2026</div>
+        <div class="meta"><span class="chip prog">Preprint</span><a href="http://arxiv.org/abs/2610.21134" target="_blank" rel="noopener">arXiv:2610.21134</a></div>
+      </div></li>
+      <li class="pub" data-first="1"><div>
+        <h3><a href="https://arxiv.org/abs/2611.07124" target="_blank" rel="noopener">Machine Learning for Live-Birth Prediction After IVF/ICSI From Structured Clinical Data: A Systematic Review, Meta-Analysis, and Critical Appraisal</a></h3>
+        <div class="authors"><b>A. R. Shahzad</b>, M. Z. Khan, U. Ajaib, A. U. Rehman, J. Deng, M. Zhang</div>
+        <div class="venue"><i>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</i>, 2026</div>
+        <div class="meta"><span class="chip prog">Under review</span><a href="https://arxiv.org/abs/2611.07124" target="_blank" rel="noopener">arXiv:2611.07124</a></div>
+      </div></li>
+      <li class="pub"><div>
+        <h3><a href="https://openreview.net/forum?id=ev1MDuum7z" target="_blank" rel="noopener">Detecting Unsupported Claims in Audience-Adaptive Clinical Trial Summaries: A Claim-Level Benchmark</a></h3>
+        <div class="authors">M. Z. Khan, X. Li, D. Ali, Y. Xu, <b>A. R. Shahzad</b></div>
+        <div class="venue">2026</div>
+        <div class="meta"><span class="chip prog">Preprint</span><a href="https://openreview.net/forum?id=ev1MDuum7z" target="_blank" rel="noopener">OpenReview</a></div>
+      </div></li>
+      <li class="pub"><div>
+        <h3>Climate Change Impacts Indo-Pacific Seagrass Beds: Insights from Ecological Niche Modelling and Phylogenetic Analyses</h3>
+        <div class="authors">S. Ahmad, L. Song, K. Wanghe, Z. Wu, G. Chen, I. Strelnikov, L. Bosso, <b>A. R. Shahzad</b>, W. Mao</div>
+        <div class="venue"><i>Ecological Indicators</i> (Elsevier), 2026</div>
+        <div class="meta"><span class="chip pubd">In press</span></div>
+      </div></li>
+      <li class="pub"><div>
+        <h3><a href="https://doi.org/10.1371/journal.pone.0321761" target="_blank" rel="noopener">Machine Learning Driven Dashboard for Chronic Myeloid Leukemia Prediction Using Protein Sequences</a></h3>
+        <div class="authors">W. Ahmad, <b>A. R. Shahzad</b>, M. A. Amin, W. H. Bangyal, T. J. Alahmadi, S. H. Khan</div>
+        <div class="venue"><i>PLoS One</i>, 20(6): e0321761, 2025</div>
+        <div class="meta"><span class="chip pubd">Published</span><a href="https://doi.org/10.1371/journal.pone.0321761" target="_blank" rel="noopener">DOI</a></div>
+      </div></li>
+      <li class="pub"><div>
+        <h3><a href="https://doi.org/10.1007/s13201-025-02434-0" target="_blank" rel="noopener">Predicting Climate Change Impacts on Groundwater Aquifer Levels in the Henan North China Plain</a></h3>
+        <div class="authors">R. Dars, J. Ping, X. Mei, C. Chen, <b>A. R. Shahzad</b>, J. Mahwa, M. A. Jamali</div>
+        <div class="venue"><i>Applied Water Science</i>, 15(6): 120, 2025</div>
+        <div class="meta"><span class="chip pubd">Published</span><a href="https://doi.org/10.1007/s13201-025-02434-0" target="_blank" rel="noopener">DOI</a></div>
+      </div></li>
+    </ol>
+    <p class="note">† Equal contribution.</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="entries">
+      <div class="entry">
+        <h3>Clinical Research Collaborator</h3><span class="where">Sep 2025 – Present</span>
+        <span class="sub">Zhongnan Hospital of Wuhan University · Wuhan, China</span>
+        <ul>
+          <li>Develop machine-learning models that predict IVF/ICSI live-birth outcomes with Prof. Zhang's clinical team.</li>
+          <li>Built the modelling and evaluation pipeline behind my M.S. thesis and two first-author manuscripts.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <h3>Data Science Instructor &amp; Academic Research Support Specialist</h3><span class="where">Feb 2023 – Sep 2024</span>
+        <span class="sub">Self-employed · Remote</span>
+        <ul>
+          <li>Taught data analysis, machine learning and deep learning to students from varied backgrounds.</li>
+          <li>Wrote research code that produced results aligned with students' thesis methodologies.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <h3>Data Science Instructor</h3><span class="where">Sep 2022 – Feb 2023</span>
+        <span class="sub">Codanics · Faisalabad, Pakistan (remote)</span>
+        <ul>
+          <li>Instructed new students in data science and machine learning (<a href="https://www.youtube.com/watch?v=zz_FGjUS6Ss&amp;list=PL9XvIvvVL50HZVnfJA2llCyKhqhQxm5Cn&amp;index=17" target="_blank" rel="noopener">lecture series</a>).</li>
+          <li>Deployed ML-powered dashboards and advised researchers on applying AI in their projects.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="entries">
+      <div class="entry">
+        <h3>PhD, Software Engineering</h3><span class="where">2026 – Present</span>
+        <span class="sub">Wuhan University · Wuhan, China</span>
+      </div>
+      <div class="entry">
+        <h3>M.S., Software Engineering</h3><span class="where">Sep 2024 – Jun 2026</span>
+        <span class="sub">Wuhan University (QS 165) · GPA 3.67/4.0, ranked 2nd in class · CSC Scholarship</span>
+        <ul><li>Thesis: <i>Development and Evaluation of AI Models for Predicting IVF/ICSI Treatment Outcomes</i></li></ul>
+      </div>
+      <div class="entry">
+        <h3>B.S., Software Engineering</h3><span class="where">Oct 2018 – Nov 2022</span>
+        <span class="sub">CECOS University of IT and Emerging Sciences, Peshawar · CGPA 3.95/4.0, ranked 1st in department · Gold Medal</span>
+        <ul><li>Thesis: <i>Machine Learning Based Leukemia Cancer Prediction Using Protein Sequential Data</i></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Selected projects</h2>
+    <div class="projects">
+      <article class="proj">
+        <h3>Leukemia prediction from protein sequences</h3>
+        <p>Streamlit dashboard that predicts leukemia from protein sequential data. XGBoost reached 94.5% accuracy. Won Best Computer Science Project and became the PLoS One paper.</p>
+        <div class="tags"><span>XGBoost</span><span>Bioinformatics</span><span>Streamlit</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/ML_based_Luekemia_cancer_prediction_using_protien_sequential_dataiction_using_protien_Sequntail_data" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <h3>MONAI MedNIST classification</h3>
+        <p>Six-class medical image classifier (CT, MRI, X-ray and more) with mixed precision, gradient accumulation, early stopping and learning-rate scheduling.</p>
+        <div class="tags"><span>PyTorch</span><span>MONAI</span><span>Medical imaging</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/mednist" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <h3>Nuclei segmentation with U-Net</h3>
+        <p>Segments nuclei across varied cell types, magnifications and imaging modalities (brightfield and fluorescence).</p>
+        <div class="tags"><span>U-Net</span><span>Segmentation</span><span>Microscopy</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/UNET-on-nuclei-images/blob/main/u_net.ipynb" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <h3>DistilBERT on real vs. GAN-synthetic data</h3>
+        <p>Compares a DistilBERT model trained on original data with the same model trained on GAN-generated synthetic data.</p>
+        <div class="tags"><span>NLP</span><span>GANs</span><span>Synthetic data</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/LLM-DistilBERT-vs-GAN-Synthetic-Data-Comparison-Project" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <h3>YBVPD: YOLOv7 visual pollution detection</h3>
+        <p>Detects visual pollution across Saudi Arabian cities. Built for the government-hosted Smartathon.</p>
+        <div class="tags"><span>YOLOv7</span><span>Object detection</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/Yolo-v7/blob/main/FinalSubmission.ipynb" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <h3>GAN family on MNIST</h3>
+        <p>Implementations of DCGAN, WGAN, WGAN-GP and conditional GAN, trained and compared on MNIST.</p>
+        <div class="tags"><span>PyTorch</span><span>Generative models</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/Generative-adversarial-networks-DCGAN-WGAN-WGAN-GP-CONDITIONAL-GAN-on-MNIST-Data-" target="_blank" rel="noopener">View code →</a>
+      </article>
+    </div>
+    <p class="note">More on <a href="https://github.com/abdul-raheem-shahzad" target="_blank" rel="noopener">GitHub</a> and <a href="https://www.kaggle.com/abdulraheem625" target="_blank" rel="noopener">Kaggle</a>.</p>
+  </section>
+
+  <section id="honors">
+    <h2>Honors &amp; awards</h2>
+    <ul class="honors">
+      <li><span class="date">Dec 2025</span><span><strong>Outstanding International Student Award</strong>, School of Computer Science, Wuhan University</span></li>
+      <li><span class="date">Jul 2024</span><span><strong>China Scholarship Council (CSC) Scholarship</strong> for M.S. study at Wuhan University</span></li>
+      <li><span class="date">Feb 2023</span><span><strong>Winner, Open Doors Olympiad</strong>, Data Science &amp; AI track (<a href="https://drive.google.com/file/d/1hhimsBbtQ896y69DS7ISf5AJ_u2eKqoB/view?usp=sharing" target="_blank" rel="noopener">certificate</a>)</span></li>
+      <li><span class="date">Dec 2022</span><span><strong>Gold Medal</strong>, highest grades in the department, CECOS University (<a href="https://drive.google.com/file/d/1gW8zfl_Jc1ENM4Mc8KCBRY6vMrIHFs-Q/view?usp=sharing" target="_blank" rel="noopener">certificate</a>)</span></li>
+      <li><span class="date">Nov 2022</span><span><strong>Silver Medal</strong>, Kaggle Data Science &amp; AI competition (<a href="https://www.kaggle.com/code/abdulraheem625/your-desired-career-with-business-analytics" target="_blank" rel="noopener">notebook</a>)</span></li>
+      <li><span class="date">Sep 2022</span><span><strong>Best Computer Science Project</strong>, final-year project, later published in a Q1 journal (<a href="https://drive.google.com/file/d/1VPaoDlegROyhZKABUzrTo2dFgB8lSFYt/view?usp=sharing" target="_blank" rel="noopener">certificate</a>)</span></li>
+      <li><span class="date">2018–22</span><span><strong>Merit-based scholarship</strong>, CECOS University, awarded in all but one semester</span></li>
+      <li><span class="date">Ongoing</span><span><strong>Kaggle Dataset &amp; Notebook Expert</strong> (<a href="https://www.kaggle.com/abdulraheem625" target="_blank" rel="noopener">profile</a>)</span></li>
+    </ul>
+  </section>
+
+  <section id="talks">
+    <h2>Talks &amp; workshops</h2>
+    <div class="entries">
+      <div class="entry">
+        <h3>Data Delights: Pie &amp; AI Interactive Analytics</h3><span class="where">Jul 2023</span>
+        <span class="sub">DeepLearning.AI community workshop · Online · Instructor, invited by a DeepLearning.AI Ambassador (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7076890574796038144/" target="_blank" rel="noopener">post</a>)</span>
+      </div>
+      <div class="entry">
+        <h3>Data Science with Python in Agriculture</h3><span class="where">Nov 2022</span>
+        <span class="sub">University of Agriculture Faisalabad · Resource person for a three-day workshop; taught ML to faculty and students. Shield of Honor (<a href="https://drive.google.com/file/d/1kX8RGRZkzBPoYirKW4HpipI9RN3rfo3i/view?usp=sharing" target="_blank" rel="noopener">certificate</a>)</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>I welcome research collaborations in clinical machine learning and medical AI.</p>
+      <div class="email-row">
+        <span class="email" id="email">abdul.raheem.colab@gmail.com</span>
+        <button type="button" class="copy" id="copy-email">Copy email</button>
+      </div>
+      <div class="refs">
+        <div><b>Dr. Zhang Yun</b><span>Associate Professor, Computer Science, Wuhan University</span><code>yunzhang@whu.edu.cn</code></div>
+        <div><b>Prof. Kifayat Ullah</b><span>Head of Department, Computer Science, CECOS University</span><code>kifayat@cecos.edu.pk</code></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Wuhan 430072, Hubei, China · Last updated November 2026</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  // Blastocyst mark: trophectoderm ring (hematoxylin) around a blastocoel, inner cell mass cluster (eosin) on one side.
+  var c=document.getElementById('blasto'); if(!c||!c.getContext) return;
+  function draw(){
+    var g=c.getContext('2d'), s=getComputedStyle(document.documentElement);
+    var hema=s.getPropertyValue('--hema').trim(), eos=s.getPropertyValue('--eosin').trim(), line=s.getPropertyValue('--line').trim();
+    var W=c.width, cx=W/2, cy=W/2, R=W*0.40;
+    g.clearRect(0,0,W,W);
+    // zona pellucida
+    g.beginPath(); g.arc(cx,cy,R+8,0,Math.PI*2); g.lineWidth=2; g.strokeStyle=line; g.stroke();
+    // trophectoderm cells
+    var n=22; g.fillStyle=hema; g.globalAlpha=.9;
+    for(var i=0;i<n;i++){var a=i/n*Math.PI*2; var x=cx+Math.cos(a)*R, y=cy+Math.sin(a)*R;
+      g.beginPath(); g.ellipse(x,y,7.2,4.4,a+Math.PI/2,0,Math.PI*2); g.fill();}
+    // inner cell mass: deterministic cluster at upper-left
+    var icm=[[0,0],[9,4],[-8,6],[3,-9],[-5,-7],[12,-5],[-12,-2],[6,11],[-3,12],[15,6]];
+    var ox=cx-R*0.42, oy=cy-R*0.40; g.fillStyle=eos; g.globalAlpha=.88;
+    icm.forEach(function(p){g.beginPath(); g.arc(ox+p[0],oy+p[1],5.6,0,Math.PI*2); g.fill();});
+    g.globalAlpha=1;
+  }
+  draw();
+  try{ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+       new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']}); }catch(e){}
+})();
+
+(function(){
+  // Publication filter
+  var btns=document.querySelectorAll('.filter button'), pubs=document.querySelectorAll('.pub');
+  btns.forEach(function(b){ b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    btns.forEach(function(x){x.setAttribute('aria-pressed', String(x===b));});
+    pubs.forEach(function(p){ p.hidden = (f==='first' && !p.hasAttribute('data-first')); });
+  });});
+})();
+
+(function(){
+  // Copy email
+  var btn=document.getElementById('copy-email'), el=document.getElementById('email');
+  function selectText(){ var r=document.createRange(); r.selectNodeContents(el); var s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+  btn.addEventListener('click',function(){
+    var done=function(){ btn.textContent='Copied'; setTimeout(function(){btn.textContent='Copy email';},1800); };
+    try{ navigator.clipboard.writeText(el.textContent).then(done,function(){ selectText(); btn.textContent='Selected, press Ctrl+C'; }); }
+    catch(e){ selectText(); btn.textContent='Selected, press Ctrl+C'; }
+  });
+})();
+</script>
+
+</body>
+</html>
