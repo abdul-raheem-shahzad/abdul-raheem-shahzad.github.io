@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Abdul Raheem Shahzad</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Abdul Raheem Shahzad — machine learning for clinical and biomedical prediction. M.S. Software Engineering, Wuhan University.">
+<meta name="description" content="Abdul Raheem Shahzad — machine learning engineer working across computer vision, NLP, generative models, healthcare and climate data. M.S. Software Engineering, Wuhan University.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <style>
-/* Layout: sticky identity column (name, stain-coloured blastocyst mark, links) beside a long reading column of sections. */
+/* Layout: sticky identity column (name, decision-boundary mark, links) beside a long reading column of sections. */
 :root{
   --bg:#F4F5F8; --surface:#FFFFFF; --ink:#151922; --muted:#5A6171; --line:#DADEE6;
   --hema:#33399A;  /* hematoxylin: primary accent */
@@ -115,6 +115,13 @@ p{margin:0;max-width:65ch}
 .proj a.code{font:500 .76rem/1 var(--mono);text-decoration:none;margin-top:4px}
 .proj a.code:hover{text-decoration:underline}
 
+.proj .domain{font:500 .7rem/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--eosin)}
+.skills{margin:0;display:grid;gap:10px}
+.skills div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:16px;align-items:baseline}
+.skills dt{font:500 .76rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.skills dd{margin:0}
+@media (max-width:560px){.skills div{grid-template-columns:minmax(0,1fr);gap:0}}
+
 /* Honors */
 .honors{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .honors li{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:16px;align-items:baseline}
@@ -153,12 +160,12 @@ footer{font:400 .74rem/1.5 var(--mono);color:var(--muted);border-top:1px solid v
 <div class="wrap">
 <aside>
   <figure class="mark" style="margin:0">
-    <canvas id="blasto" width="152" height="152" aria-label="Schematic of a blastocyst: a ring of trophectoderm cells around an inner cell mass"></canvas>
-    <figcaption>Blastocyst: trophectoderm ring and inner cell mass, the two structures my IVF model encodes separately.</figcaption>
+    <canvas id="mark" width="152" height="152" aria-label="Two classes of points separated by a learned decision boundary"></canvas>
+    <figcaption>Two classes, one learned boundary. Same problem in a clinic, a city street or an aquifer.</figcaption>
   </figure>
   <div>
     <h1>Abdul Raheem Shahzad</h1>
-    <p class="role">Machine learning researcher<br>M.S. Software Engineering, Wuhan University</p>
+    <p class="role">Machine Learning Engineer<br>M.S. Software Engineering, Wuhan University</p>
   </div>
   <ul class="links">
     <li><a href="https://t.ly/vts8H" target="_blank" rel="noopener"><span>Scholar</span>Google Scholar</a></li>
@@ -171,18 +178,18 @@ footer{font:400 .74rem/1.5 var(--mono);color:var(--muted);border-top:1px solid v
   <nav aria-label="Sections">
     <a href="#about">About</a><a href="#news">News</a><a href="#publications">Publications</a>
     <a href="#experience">Experience</a><a href="#education">Education</a><a href="#projects">Projects</a>
-    <a href="#honors">Honors</a><a href="#talks">Talks</a><a href="#contact">Contact</a>
+    <a href="#skills">Skills</a><a href="#honors">Honors</a><a href="#talks">Talks</a><a href="#contact">Contact</a>
   </nav>
 </aside>
 
 <main>
   <section id="about">
     <h2>About</h2>
-    <p class="lede">I build machine-learning models for <strong>clinical and biomedical prediction</strong>. My current work, with Prof.&nbsp;Zhang's team at Zhongnan Hospital of Wuhan University, predicts live birth after IVF/ICSI from embryo morphology and structured clinical data.</p>
-    <p>I completed my M.S. in Software Engineering at Wuhan University as a China Scholarship Council scholar (GPA 3.67/4.0, ranked 2nd in class). I hold a B.S. in Software Engineering from CECOS University, where I graduated first in the department with a gold medal. Alongside clinical ML, I apply deep learning to environmental data, including groundwater forecasting and seagrass habitat modelling.</p>
-    <ul class="interests" aria-label="Research interests">
-      <li>Clinical prediction models</li><li>Assisted reproduction (IVF/ICSI)</li><li>Medical image analysis</li>
-      <li>Trustworthy clinical NLP</li><li>Systematic review &amp; meta-analysis</li><li>ML for climate &amp; environment</li>
+    <p class="lede">I am a <strong>machine learning engineer</strong>. I build, evaluate and deploy models for computer vision, NLP, generative modelling and time-series forecasting, and I have shipped them in healthcare, climate science, agriculture and urban monitoring.</p>
+    <p>I completed my M.S. in Software Engineering at Wuhan University as a China Scholarship Council scholar (GPA 3.67/4.0, ranked 2nd in class), and my B.S. at CECOS University, where I graduated first in the department with a gold medal. My work spans live-birth prediction for IVF/ICSI with Zhongnan Hospital, groundwater forecasting under climate change, seagrass habitat modelling, YOLOv7 detection of visual pollution, and benchmarking LLM-generated clinical summaries. I also taught data science and machine learning for two years and deploy my models as working dashboards.</p>
+    <ul class="interests" aria-label="Focus areas">
+      <li>Deep learning</li><li>Computer vision</li><li>NLP &amp; LLM fine-tuning</li><li>Generative models</li>
+      <li>Time-series forecasting</li><li>Healthcare ML</li><li>Climate &amp; environmental ML</li><li>Model deployment</li>
     </ul>
   </section>
 
@@ -295,43 +302,73 @@ footer{font:400 .74rem/1.5 var(--mono);color:var(--muted);border-top:1px solid v
     <h2>Selected projects</h2>
     <div class="projects">
       <article class="proj">
-        <h3>Leukemia prediction from protein sequences</h3>
-        <p>Streamlit dashboard that predicts leukemia from protein sequential data. XGBoost reached 94.5% accuracy. Won Best Computer Science Project and became the PLoS One paper.</p>
-        <div class="tags"><span>XGBoost</span><span>Bioinformatics</span><span>Streamlit</span></div>
-        <a class="code" href="https://github.com/abdul-raheem-shahzad/ML_based_Luekemia_cancer_prediction_using_protien_sequential_dataiction_using_protien_Sequntail_data" target="_blank" rel="noopener">View code →</a>
-      </article>
-      <article class="proj">
-        <h3>MONAI MedNIST classification</h3>
-        <p>Six-class medical image classifier (CT, MRI, X-ray and more) with mixed precision, gradient accumulation, early stopping and learning-rate scheduling.</p>
-        <div class="tags"><span>PyTorch</span><span>MONAI</span><span>Medical imaging</span></div>
-        <a class="code" href="https://github.com/abdul-raheem-shahzad/mednist" target="_blank" rel="noopener">View code →</a>
-      </article>
-      <article class="proj">
-        <h3>Nuclei segmentation with U-Net</h3>
-        <p>Segments nuclei across varied cell types, magnifications and imaging modalities (brightfield and fluorescence).</p>
-        <div class="tags"><span>U-Net</span><span>Segmentation</span><span>Microscopy</span></div>
-        <a class="code" href="https://github.com/abdul-raheem-shahzad/UNET-on-nuclei-images/blob/main/u_net.ipynb" target="_blank" rel="noopener">View code →</a>
-      </article>
-      <article class="proj">
-        <h3>DistilBERT on real vs. GAN-synthetic data</h3>
-        <p>Compares a DistilBERT model trained on original data with the same model trained on GAN-generated synthetic data.</p>
-        <div class="tags"><span>NLP</span><span>GANs</span><span>Synthetic data</span></div>
-        <a class="code" href="https://github.com/abdul-raheem-shahzad/LLM-DistilBERT-vs-GAN-Synthetic-Data-Comparison-Project" target="_blank" rel="noopener">View code →</a>
-      </article>
-      <article class="proj">
+        <span class="domain">Computer vision · Urban monitoring</span>
         <h3>YBVPD: YOLOv7 visual pollution detection</h3>
         <p>Detects visual pollution across Saudi Arabian cities. Built for the government-hosted Smartathon.</p>
         <div class="tags"><span>YOLOv7</span><span>Object detection</span></div>
         <a class="code" href="https://github.com/abdul-raheem-shahzad/Yolo-v7/blob/main/FinalSubmission.ipynb" target="_blank" rel="noopener">View code →</a>
       </article>
       <article class="proj">
+        <span class="domain">Time series · Climate &amp; water</span>
+        <h3>Groundwater level forecasting</h3>
+        <p>Bi-LSTM and GRU forecasts of groundwater aquifer levels under climate change in the Henan North China Plain.</p>
+        <div class="tags"><span>Bi-LSTM</span><span>GRU</span><span>Forecasting</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/Bi-LSTM-and-GRU-to-Forecast-climate-change-impacts-on-groundwater-aquifer-levels-in-the-Henan-North-" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <span class="domain">NLP · Synthetic data</span>
+        <h3>DistilBERT on real vs. GAN-synthetic data</h3>
+        <p>Compares a DistilBERT model trained on original data with the same model trained on GAN-generated synthetic data.</p>
+        <div class="tags"><span>Transformers</span><span>GANs</span><span>Text classification</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/LLM-DistilBERT-vs-GAN-Synthetic-Data-Comparison-Project" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <span class="domain">Generative models</span>
         <h3>GAN family on MNIST</h3>
         <p>Implementations of DCGAN, WGAN, WGAN-GP and conditional GAN, trained and compared on MNIST.</p>
-        <div class="tags"><span>PyTorch</span><span>Generative models</span></div>
+        <div class="tags"><span>PyTorch</span><span>DCGAN</span><span>WGAN-GP</span></div>
         <a class="code" href="https://github.com/abdul-raheem-shahzad/Generative-adversarial-networks-DCGAN-WGAN-WGAN-GP-CONDITIONAL-GAN-on-MNIST-Data-" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <span class="domain">Tabular ML · Agriculture</span>
+        <h3>Nitrate leaching prediction</h3>
+        <p>Predicts nitrate leaching in irrigated agriculture from research data, served as an interactive dashboard.</p>
+        <div class="tags"><span>Regression</span><span>Dashboard</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/Nitrate_leaching" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <span class="domain">Time series · Travel</span>
+        <h3>Airline fare timing (Sastaticket.pk hackathon)</h3>
+        <p>EDA on airline arrival and departure time series to find the best booking windows for travellers.</p>
+        <div class="tags"><span>Time series</span><span>EDA</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/Sasta-Ticket" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <span class="domain">Computer vision · Medical imaging</span>
+        <h3>MONAI MedNIST classification</h3>
+        <p>Six-class image classifier (CT, MRI, X-ray and more) with mixed precision, gradient accumulation, early stopping and learning-rate scheduling.</p>
+        <div class="tags"><span>PyTorch</span><span>MONAI</span><span>Training efficiency</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/mednist" target="_blank" rel="noopener">View code →</a>
+      </article>
+      <article class="proj">
+        <span class="domain">Tabular ML · Bioinformatics</span>
+        <h3>Leukemia prediction from protein sequences</h3>
+        <p>Streamlit dashboard predicting leukemia from protein sequence data. XGBoost reached 94.5% accuracy; the work became a PLoS One paper.</p>
+        <div class="tags"><span>XGBoost</span><span>Streamlit</span></div>
+        <a class="code" href="https://github.com/abdul-raheem-shahzad/ML_based_Luekemia_cancer_prediction_using_protien_sequential_dataiction_using_protien_Sequntail_data" target="_blank" rel="noopener">View code →</a>
       </article>
     </div>
     <p class="note">More on <a href="https://github.com/abdul-raheem-shahzad" target="_blank" rel="noopener">GitHub</a> and <a href="https://www.kaggle.com/abdulraheem625" target="_blank" rel="noopener">Kaggle</a>.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <div><dt>ML &amp; AI</dt><dd>Deep learning, computer vision, NLP, LLM fine-tuning, generative AI, agentic AI, classical ML</dd></div>
+      <div><dt>Frameworks</dt><dd>PyTorch, TensorFlow, MONAI, scikit-learn, XGBoost, Streamlit</dd></div>
+      <div><dt>Languages</dt><dd>Python, MATLAB, C/C++, R, PHP, HTML/CSS</dd></div>
+      <div><dt>Tools</dt><dd>Git/GitHub, VS Code, Cursor, TRAE, Google Colab, TensorBoard</dd></div>
+    </dl>
   </section>
 
   <section id="honors">
@@ -365,7 +402,7 @@ footer{font:400 .74rem/1.5 var(--mono);color:var(--muted);border-top:1px solid v
   <section id="contact">
     <h2>Contact</h2>
     <div class="contact">
-      <p>I welcome research collaborations in clinical machine learning and medical AI.</p>
+      <p>I welcome machine learning engineering roles and research collaborations in any domain.</p>
       <div class="email-row">
         <span class="email" id="email">abdul.raheem.colab@gmail.com</span>
         <button type="button" class="copy" id="copy-email">Copy email</button>
@@ -383,24 +420,24 @@ footer{font:400 .74rem/1.5 var(--mono);color:var(--muted);border-top:1px solid v
 
 <script>
 (function(){
-  // Blastocyst mark: trophectoderm ring (hematoxylin) around a blastocoel, inner cell mass cluster (eosin) on one side.
-  var c=document.getElementById('blasto'); if(!c||!c.getContext) return;
+  // Mark: two point classes separated by a curved decision boundary.
+  var c=document.getElementById('mark'); if(!c||!c.getContext) return;
   function draw(){
-    var g=c.getContext('2d'), s=getComputedStyle(document.documentElement);
-    var hema=s.getPropertyValue('--hema').trim(), eos=s.getPropertyValue('--eosin').trim(), line=s.getPropertyValue('--line').trim();
-    var W=c.width, cx=W/2, cy=W/2, R=W*0.40;
-    g.clearRect(0,0,W,W);
-    // zona pellucida
-    g.beginPath(); g.arc(cx,cy,R+8,0,Math.PI*2); g.lineWidth=2; g.strokeStyle=line; g.stroke();
-    // trophectoderm cells
-    var n=22; g.fillStyle=hema; g.globalAlpha=.9;
-    for(var i=0;i<n;i++){var a=i/n*Math.PI*2; var x=cx+Math.cos(a)*R, y=cy+Math.sin(a)*R;
-      g.beginPath(); g.ellipse(x,y,7.2,4.4,a+Math.PI/2,0,Math.PI*2); g.fill();}
-    // inner cell mass: deterministic cluster at upper-left
-    var icm=[[0,0],[9,4],[-8,6],[3,-9],[-5,-7],[12,-5],[-12,-2],[6,11],[-3,12],[15,6]];
-    var ox=cx-R*0.42, oy=cy-R*0.40; g.fillStyle=eos; g.globalAlpha=.88;
-    icm.forEach(function(p){g.beginPath(); g.arc(ox+p[0],oy+p[1],5.6,0,Math.PI*2); g.fill();});
-    g.globalAlpha=1;
+    var g=c.getContext('2d'), st=getComputedStyle(document.documentElement);
+    var hema=st.getPropertyValue('--hema').trim(), eos=st.getPropertyValue('--eosin').trim(), line=st.getPropertyValue('--line').trim(), ink=st.getPropertyValue('--ink').trim();
+    var W=c.width; g.clearRect(0,0,W,W);
+    g.strokeStyle=line; g.lineWidth=2; g.strokeRect(4,4,W-8,W-8);
+    function f(x){return 0.62*W - 0.55*(x-0.5*W) + 0.0035*Math.pow(x-0.5*W,2);} // boundary y(x)
+    // deterministic pseudo-random points
+    var seed=7; function rnd(){seed=(seed*16807)%2147483647; return seed/2147483647;}
+    for(var i=0;i<46;i++){
+      var x=14+rnd()*(W-28), y=14+rnd()*(W-28), d=y-f(x);
+      if(Math.abs(d)<9) continue;
+      g.fillStyle = d<0 ? hema : eos; g.globalAlpha=.9;
+      g.beginPath(); g.arc(x,y,4.2,0,Math.PI*2); g.fill();
+    }
+    g.globalAlpha=1; g.strokeStyle=ink; g.lineWidth=2.4; g.beginPath();
+    for(var x=6;x<=W-6;x+=2){var y=Math.max(6,Math.min(W-6,f(x))); x===6?g.moveTo(x,y):g.lineTo(x,y);} g.stroke();
   }
   draw();
   try{ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
